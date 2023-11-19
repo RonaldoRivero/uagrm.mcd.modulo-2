@@ -1,1 +1,9 @@
-/archivos
+/archivos/data/covid/images
+/archivos/data/covid/masks
+/archivos/data/normal/images
+/archivos/data/normal/masks
+/archivos/data/neumonia-viral/images
+/archivos/data/neumonia-viral/masks
+/archivos/data/opacidad-pulmonar/images
+/archivos/data/opacidad-pulmonar/masks
+/.idea
