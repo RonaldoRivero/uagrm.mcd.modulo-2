@@ -35,7 +35,7 @@ class RadiografiaNegocio:
         elif tipo == self.TIPO_NEUMONIA_VIRAL:
             self.__neumonia_viral.crear_registro(nombre, formato, dimensiones, url, archivo_imagen, archivo_mask)
         elif tipo == self.TIPO_OPACIDAD_PULMONAR:
-            self.__opacidad_pulmonar.crear_registro(nombre, formato, dimensiones, url)
+            self.__opacidad_pulmonar.crear_registro(nombre, formato, dimensiones, url, archivo_imagen, archivo_mask)
 
     def actualizar(self, tipo, nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo, archivo_imagen_nuevo, archivo_mask_nuevo):
         if tipo == self.TIPO_NORMAL:
@@ -45,7 +45,7 @@ class RadiografiaNegocio:
         elif tipo == self.TIPO_NEUMONIA_VIRAL:
             self.__neumonia_viral.actualizar_registro(nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo, archivo_imagen_nuevo, archivo_mask_nuevo)
         elif tipo == self.TIPO_OPACIDAD_PULMONAR:
-            self.__opacidad_pulmonar.actualizar_registro(nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo)
+            self.__opacidad_pulmonar.actualizar_registro(nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo, archivo_imagen_nuevo, archivo_mask_nuevo)
 
     def eliminar(self, tipo, nombre):
         if tipo == self.TIPO_NORMAL:
