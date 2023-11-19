@@ -27,9 +27,9 @@ class RadiografiaNegocio:
             lista = self.__opacidad_pulmonar.leer_registros()
         return lista
 
-    def registrar(self, tipo, nombre, formato, dimensiones, url):
+    def registrar(self, tipo, nombre, formato, dimensiones, url, archivo_imagen, archivo_mask):
         if tipo == self.TIPO_NORMAL:
-            self.__normal.crear_registro(nombre, formato, dimensiones, url)
+            self.__normal.crear_registro(nombre, formato, dimensiones, url, archivo_imagen, archivo_mask)
         elif tipo == self.TIPO_COVID:
             self.__covid.crear_registro(nombre, formato, dimensiones, url)
         elif tipo == self.TIPO_NEUMONIA_VIRAL:
@@ -37,9 +37,9 @@ class RadiografiaNegocio:
         elif tipo == self.TIPO_OPACIDAD_PULMONAR:
             self.__opacidad_pulmonar.crear_registro(nombre, formato, dimensiones, url)
 
-    def actualizar(self, tipo, nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo):
+    def actualizar(self, tipo, nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo, archivo_imagen_nuevo, archivo_mask_nuevo):
         if tipo == self.TIPO_NORMAL:
-            self.__normal.actualizar_registro(nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo)
+            self.__normal.actualizar_registro(nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo, archivo_imagen_nuevo, archivo_mask_nuevo)
         elif tipo == self.TIPO_COVID:
             self.__covid.actualizar_registro(nombre_anterior, nombre_nuevo, formato_nuevo, dimensiones_nuevo, url_nuevo)
         elif tipo == self.TIPO_NEUMONIA_VIRAL:

@@ -32,17 +32,21 @@ class CRUDApp:
         self.label_ruta = ttk.Label(root, text="Ruta de la imagen:")
         self.entry_ruta = ttk.Entry(root)
 
-        self.label_archivo = ttk.Label(root, text="Seleccionar archivo:")
+        self.label_archivo = ttk.Label(root, text="Seleccionar imagen:")
         self.entry_archivo = ttk.Entry(root)
         self.btn_seleccionar_archivo = ttk.Button(root, text="Seleccionar", command=self.seleccionar_archivo)
 
+        self.label_archivo_mask = ttk.Label(root, text="Seleccionar imagen mask:")
+        self.entry_archivo_mask = ttk.Entry(root)
+        self.btn_seleccionar_archivo_mask = ttk.Button(root, text="Seleccionar", command=self.seleccionar_archivo_mask)
+
         self.btn_agregar = ttk.Button(root, text="Agregar", command=self.agregar_registro)
 
-        # Botones para actualizar y eliminar
+
         self.btn_actualizar = ttk.Button(root, text="Actualizar", command=self.actualizar_registro)
         self.btn_eliminar = ttk.Button(root, text="Eliminar", command=self.eliminar_registro)
 
-        # Diseño de la interfaz
+
         self.label_tipo.grid(row=0, column=0, padx=10, pady=5, sticky=tk.W)
         self.combo_tipo.grid(row=0, column=1, padx=10, pady=5)
         self.btn_mostrar.grid(row=0, column=2, padx=10, pady=5)
@@ -63,7 +67,11 @@ class CRUDApp:
         self.entry_archivo.grid(row=5, column=1, padx=10, pady=5)
         self.btn_seleccionar_archivo.grid(row=5, column=2, padx=10, pady=5)
 
-        self.btn_agregar.grid(row=6, column=0, columnspan=2, pady=10)
+        self.label_archivo_mask.grid(row=6, column=0, padx=10, pady=5, sticky=tk.W)
+        self.entry_archivo_mask.grid(row=6, column=1, padx=10, pady=5)
+        self.btn_seleccionar_archivo_mask.grid(row=6, column=2, padx=10, pady=5)
+
+        self.btn_agregar.grid(row=7, column=0, columnspan=2, pady=10)
 
         self.btn_actualizar.grid(row=9, column=0, pady=10)
         self.btn_eliminar.grid(row=9, column=1, pady=10)
@@ -85,6 +93,13 @@ class CRUDApp:
             self.entry_archivo.delete(0, tk.END)
             self.entry_archivo.insert(0, ruta_archivo)
 
+    def seleccionar_archivo_mask(self):
+        ruta_archivo = filedialog.askopenfilename(title="Seleccionar archivo",
+                                                  filetypes=[("Archivos de imagen mask", "*.png;*.jpg;*.jpeg;*.gif")])
+        if ruta_archivo:
+            self.entry_archivo_mask.delete(0, tk.END)
+            self.entry_archivo_mask.insert(0, ruta_archivo)
+
     def agregar_registro(self):
         tipo = self.combo_tipo.get()
         nombre = self.entry_nombre.get()
@@ -92,14 +107,8 @@ class CRUDApp:
         dimension = self.entry_dimension.get()
         ruta = self.entry_ruta.get()
         archivo = self.entry_archivo.get()
-        # Copiar el archivo al directorio del proyecto
-        '''
-        if archivo:
-            nuevo_nombre_archivo = f"{nombre}.{formato}"  # Cambiar el nombre del archivo si es necesario
-            nuevo_path = f"ruta/del/proyecto/{nuevo_nombre_archivo}"  # Cambiar la ruta del proyecto
-            shutil.copy(archivo, nuevo_path)
-        '''
-        self.__radiografia_negocio.registrar(tipo, nombre, formato, dimension, ruta)
+        archivo_mask = self.entry_archivo_mask.get()
+        self.__radiografia_negocio.registrar(tipo, nombre, formato, dimension, ruta, archivo, archivo_mask)
         self.limpiar_formulario()
         self.actualizar_tabla()
 
@@ -133,8 +142,9 @@ class CRUDApp:
             dimension = self.entry_dimension.get()
             ruta = self.entry_ruta.get()
             archivo = self.entry_archivo.get()
+            archivo_mask = self.entry_archivo_mask.get()
 
-            self.__radiografia_negocio.actualizar(tipo, nombre_a_actualizar, nombre, formato, dimension, ruta)
+            self.__radiografia_negocio.actualizar(tipo, nombre_a_actualizar, nombre, formato, dimension, ruta, archivo, archivo_mask)
             self.limpiar_formulario()
             self.actualizar_tabla()
         else:
