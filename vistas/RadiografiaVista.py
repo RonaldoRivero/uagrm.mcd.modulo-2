@@ -161,3 +161,4 @@ class RadiografiaVista:
         self.entry_dimension.delete(0, tk.END)
         self.entry_ruta.delete(0, tk.END)
         self.entry_archivo.delete(0, tk.END)
+        self.entry_archivo_mask.delete(0, tk.END)
