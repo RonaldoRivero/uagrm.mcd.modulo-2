@@ -167,9 +167,3 @@ class CRUDApp:
         self.entry_dimension.delete(0, tk.END)
         self.entry_ruta.delete(0, tk.END)
         self.entry_archivo.delete(0, tk.END)
-
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = CRUDApp(root)
-    root.mainloop()
