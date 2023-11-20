@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 
 
-class CRUDApp:
+class RadiografiaVista:
 
     def __init__(self, root):
         self.root = root
@@ -16,7 +16,6 @@ class CRUDApp:
         self.combo_tipo.set("normal")
         self.btn_mostrar = ttk.Button(root, text="Mostrar", command=self.mostrar_registros)
 
-        # Crear widgets
         self.label_nombre = ttk.Label(root, text="Nombre de la imagen:")
         self.entry_nombre = ttk.Entry(root)
 

@@ -1,4 +1,4 @@
-# CRUD App
+# Gestión de Imágenes
 
 Este proyecto en Python utiliza las librerías tkinter, pandas, os y shutil para crear una aplicación simple que permite al usuario listar, registrar, actualizar y eliminar registros de radiografias utilizando un archivo CSV como archivo de dato, cargarlo y copiarlo a otro directorio.
 

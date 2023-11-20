@@ -1,7 +1,7 @@
-from vistas.RadiografiaVista import CRUDApp
+from vistas.RadiografiaVista import RadiografiaVista
 import tkinter as tk
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = CRUDApp(root)
+    app = RadiografiaVista(root)
     root.mainloop()
