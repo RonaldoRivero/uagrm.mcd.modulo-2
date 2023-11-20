@@ -8,3 +8,12 @@ Asegúrate de tener Python 3.11 instalado en tu sistema. Puedes instalar las dep
 
 ```bash
 pip install pandas
+```
+
+## Ejecución
+
+para ejecutar el proyecto no olvides abrir una consola de comando en la carpeta raiz del proyecto y ejecutar el siguiente comando:
+
+```bash
+python3 ./main.py
+```

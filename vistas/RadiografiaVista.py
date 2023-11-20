@@ -1,7 +1,6 @@
 from negocios.RadiografiaNegocio import RadiografiaNegocio
 import tkinter as tk
 from tkinter import ttk, filedialog
-import pandas as pd
 
 
 class CRUDApp:
@@ -11,8 +10,6 @@ class CRUDApp:
         self.root.title("Modulo 2")
         self.__radiografia_negocio = RadiografiaNegocio()
         self.__registro_seleccionado = None
-
-        self.df = pd.DataFrame(columns=['Nombre_imagen', 'Formato_imagen', 'Dimension_imagen', 'Ruta_imagen'])
 
         self.label_tipo = ttk.Label(root, text="Tipo de imagen:")
         self.combo_tipo = ttk.Combobox(root, values=["normal", "covid", "neumonia viral", "opacidad pulmonar"])
@@ -76,14 +73,12 @@ class CRUDApp:
         self.btn_actualizar.grid(row=9, column=0, pady=10)
         self.btn_eliminar.grid(row=9, column=1, pady=10)
 
-        # Crear una tabla para mostrar los registros
-        self.tree = ttk.Treeview(root, columns=self.df.columns, show='headings')
-        for i, col in enumerate(self.df.columns):
+        columnas = ['Nombre de imagen', 'Formato de imagen', 'Dimensiones', 'URL']
+        self.tree = ttk.Treeview(root, columns=columnas, show='headings')
+        for i, col in enumerate(columnas):
             self.tree.heading(i, text=col)
-            self.tree.column(i, width=100)
+            self.tree.column(i, width=130)
         self.tree.grid(row=8, column=0, columnspan=4, padx=10, pady=5)
-
-        # Configurar la selección de fila en la tabla
         self.tree.bind("<ButtonRelease-1>", self.seleccionar_fila)
 
     def seleccionar_archivo(self):
